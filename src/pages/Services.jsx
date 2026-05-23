@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { createPortal } from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import PageWrapper from '../components/PageWrapper'
@@ -106,7 +107,7 @@ const SERVICES = [
 function ServiceModal({ service, onClose }) {
   if (!service) return null
 
-  return (
+  return createPortal(
     <AnimatePresence>
       <motion.div
         key="backdrop"
@@ -260,7 +261,8 @@ function ServiceModal({ service, onClose }) {
           </motion.div>
         </motion.div>
       </motion.div>
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   )
 }
 
